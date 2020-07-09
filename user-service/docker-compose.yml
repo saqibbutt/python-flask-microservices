@@ -1,0 +1,38 @@
+# docker-compose.yml
+version: '3.8'
+
+volumes:
+  userdb_vol:
+
+networks:
+  micro_network:
+    external:
+      name: micro_network
+
+services:
+  user-api:
+    container_name: cuser-service
+    build:
+      context: .
+    ports:
+    - "5001:5001"
+    depends_on:
+      - user-db
+    networks:
+      - micro_network
+    restart: always
+
+  user-db:
+    container_name: cuser_dbase
+    image: mysql:8
+    ports:
+    - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: pfm_dc_2020
+      MYSQL_DATABASE: user
+      MYSQL_USER: cloudacademy
+      MYSQL_PASSWORD: pfm_2020
+    networks:
+      - micro_network
+    volumes:
+    - userdb_vol:/var/lib/mysql

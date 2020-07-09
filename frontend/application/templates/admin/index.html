@@ -1,0 +1,19 @@
+{% extends "base_col_1.html" %}
+{% from "macros/_macros_form.html" import render_field %}
+{% block title %}Product page{% endblock %}
+
+{% block pageContent %}
+    <strong>{{ message }}</strong>
+    <h1>Add Product</h1>
+
+    <div class="form-group">
+        <form action="" method=post enctype=multipart/form-data>
+            <input type="text" name="name">
+            <input type="text" name="slug">
+            <input type=file name=image>
+            <input type="number" name="price">
+            <input type=submit value=Upload>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: '3.8'
+
+networks:
+  micro_network:
+    external:
+      name: micro_network
+
+services:
+  frontend-app:
+    container_name: cfrontend-app
+    build:
+      context: .
+    ports:
+    - "5000:5000"
+    networks:
+      - micro_network
+    restart: always

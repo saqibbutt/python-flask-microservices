@@ -1,0 +1,38 @@
+# docker-compose.yml
+version: '3.8'
+
+volumes:
+  productdb_vol:
+
+networks:
+  micro_network:
+    external:
+      name: micro_network
+
+services:
+  product-api:
+    container_name: cproduct-service
+    build:
+      context: .
+    ports:
+    - "5002:5002"
+    depends_on:
+      - product-db
+    networks:
+      - micro_network
+    restart: always
+
+  product-db:
+    container_name: cproduct_dbase
+    image: mysql:8
+    ports:
+    - "32001:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: pfm_dc_2020
+      MYSQL_DATABASE: product
+      MYSQL_USER: cloudacademy
+      MYSQL_PASSWORD: pfm_2020
+    networks:
+      - micro_network
+    volumes:
+    - productdb_vol:/var/lib/mysql
