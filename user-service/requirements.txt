@@ -24,7 +24,7 @@ Mako==1.1.2
 MarkupSafe==1.1.1
 marshmallow==3.5.1
 passlib==1.7.2
-protobuf==3.6.1
+protobuf==3.18.3
 pycparser==2.20
 PyMySQL==0.9.3
 python-dateutil==2.8.1
