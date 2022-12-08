@@ -1,7 +1,7 @@
 alembic==1.4.2
 autoenv==1.0.0
 blinker==1.4
-certifi==2019.11.28
+certifi==2022.12.7
 cffi==1.14.0
 chardet==3.0.4
 click==7.1.1
